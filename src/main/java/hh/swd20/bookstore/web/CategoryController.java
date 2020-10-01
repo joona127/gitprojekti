@@ -22,11 +22,11 @@ import hh.swd20.bookstore.domain.CategoryRepository;
 public class CategoryController {
 
 	 @Autowired
-		private CategoryRepository repository;
+	 private CategoryRepository crepository;
 		
 		@RequestMapping("/categorylist")
 		public String categoryList(Model model) {
-		     model.addAttribute("categories", repository.findAll());
+		     model.addAttribute("categories", crepository.findAll());
 			
 			return "categorylist";
 }
@@ -39,7 +39,7 @@ public class CategoryController {
 		
 		@RequestMapping(value = "/savecategory", method = RequestMethod.POST)
 		public String save(Category c) {
-			repository.save(c);
+			crepository.save(c);
 			return "redirect:categorylist";
 		}
 }

@@ -21,7 +21,9 @@ private String isbn;
 @JoinColumn(name = "CategoryId")
 private Category category;
 
-
+public Book() {
+	
+}
 
 public Book(String title, String author, int year, String isbn, Category category) {
 	super();
@@ -29,27 +31,11 @@ public Book(String title, String author, int year, String isbn, Category categor
 	this.author = author;
 	this.year = year;
 	this.isbn = isbn;
+	this.category = category;
 }
 
-public Book () {
-super();
-this.id = null;
-this.title = null;
-this.author = null;
-this.year = 0;
-this.isbn = null;
 
-}
 
-public Book(Long id, String title, String author, int year, String isbn) {
-	super();
-	this.id = id;
-	this.title = title;
-	this.author = author;
-	this.year = year;
-	this.isbn = isbn;
-	
-}
 
 public Long getId() {
 	return id;
