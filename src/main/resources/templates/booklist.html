@@ -8,8 +8,17 @@
 
 </head>
 <body>
+    <div class="col-md-3" style="margin-left:650px">
 	<h1>Books</h1>
+	
+	</div>
 	<table class="table table-striped">
+	
+	<div class="col-md-4" style="padding: 20px; margin-left:1200px">
+	<form th:action="@{/logout}" method="post">
+	<input type="submit" value="Sign Out" class="btn btn-danger"/>
+	</form>
+	</div>
 	<thead>
 	<tr>
 	<th> Title </th>
@@ -20,6 +29,7 @@
 	
 	</tr>
 	
+	
 	</thead>
 	     <tbody>
 	          <tr th:each = "book : ${books}">
@@ -27,8 +37,8 @@
 	          <td th:text="${book.author}">Author</td>
 	          <td th:text="${book.year}">Year</td>
 	          <td th:text="${book.isbn}">ISBN</td>
-	          <td th:text="${book.category.name}">Category</td>
-	          <td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
+	          <td th:text="${book.category} ? ${book.category.name} : ''">Category</td>
+	          <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>
 	          </tr>
 	     
 	     </tbody>
